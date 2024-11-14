@@ -103,7 +103,7 @@ Most of the time, we don't know the full data-generating process. In this case, 
 #| label: observed
 likelihood_knows_obs <- function(param, y_obs, x_obs) {
   y_pred <- plogis(
-    param[1] + param[2] * x_obs
+    param[1] + param[2] * x_obs[,1]
     )
   ifelse(y_obs == 1, y_pred, 1-y_pred) |>
     log() |>
@@ -132,7 +132,7 @@ Finally, we can try to calibrate the model while fixing one of the model paramet
 # Log-likelihood function
 likelihood_wishful <- function(param, y_obs, x_obs) {
   y_pred <- plogis(
-    param[1] + 2 * x_obs
+    param[1] + 2 * x_obs[,1]
     )
   ans <- ifelse(y_obs == 1, y_pred, 1-y_pred) |>
     log() |>

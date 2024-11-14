@@ -148,7 +148,7 @@ model (so it is simpler).
 ``` r
 likelihood_knows_obs <- function(param, y_obs, x_obs) {
   y_pred <- plogis(
-    param[1] + param[2] * x_obs
+    param[1] + param[2] * x_obs[,1]
     )
   ifelse(y_obs == 1, y_pred, 1-y_pred) |>
     log() |>
@@ -201,7 +201,7 @@ add a normal prior to the intercept that is centered around 1.
 # Log-likelihood function
 likelihood_wishful <- function(param, y_obs, x_obs) {
   y_pred <- plogis(
-    param[1] + 2 * x_obs
+    param[1] + 2 * x_obs[,1]
     )
   ans <- ifelse(y_obs == 1, y_pred, 1-y_pred) |>
     log() |>
