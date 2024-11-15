@@ -16,7 +16,7 @@ $$
 \Pr(y_i = 1) = \Phi^{-1}\left(\alpha + \mathbf{x}_i\theta\right)
 $$
 
-Where $\alpha = 1$, $\theta \equiv [2, 1]$, and $\mathbf{x}_i$ is a
+Where $\alpha = 1$, $\theta \equiv [2, -1]$, and $\mathbf{x}_i$ is a
 vector of two components: one observed and one latent. The following
 code generates the data and fits the model:
 
