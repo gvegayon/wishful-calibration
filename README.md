@@ -13,7 +13,7 @@
 To illustrate this, let’s think of a simple probit model:
 
 $$
-\Pr(y_i = 1) = \Phi^{-1}\left(\alpha + \mathbf{x}_i\theta\right)
+\Pr(y_i = 1: \mathbf{x}, \alpha, \theta) = \Phi^{-1}\left(\alpha + \mathbf{x}_i\theta\right)
 $$
 
 Where $\alpha = 1$, $\theta \equiv [2, -1]$, and $\mathbf{x}_i$ is a
