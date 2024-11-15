@@ -89,8 +89,9 @@ mle <- function(fn, par) {
 ## Attempt one: Ideal world (we know all)
 
 In an ideal world we get to know the data-generating process fully.
-Here, the MLE estimation should be able to recover the parameters of the
-model **and** the MAE should be the lowest possible.
+Here, the Maximum Likelihood estimation \[MLE\] should be able to
+recover the parameters of the model **and** the Mean Absolute Error
+\[MAE\] should be the lowest possible.
 
 ``` r
 # Log-likelihood function
@@ -256,32 +257,6 @@ y_pred <- plogis(1 + theta[2] * x_target[,1])
 
 ## Comparing all results
 
-``` r
-data.frame(
-  Model = c("Real", "Approx", "Wishful", "Fully Wishful"),
-  'Intercept (bias)' = c(
-    res_ideal$par[1],
-    res_observed$par[1],
-    res_wishful$par[1],
-    1
-    ) - 1,
-  `Bias (x observed)` = c(
-    res_ideal$par[2],
-    res_observed$par[2],
-    2,
-    theta[1]
-    ) - theta[1],
-  `Bias (x latent)` = c(
-    res_ideal$par[3],
-    NA,
-    NA,
-    NA
-  ) - theta[2],
-  MAE = c(mae_ideal, mae_observed, mae_wishful, mae_fully_wishful),
-  check.names = FALSE
-) |> knitr::kable(digits = 4)
-```
-
 | Model         | Intercept (bias) | Bias (x observed) | Bias (x latent) |    MAE |
 |:--------------|-----------------:|------------------:|----------------:|-------:|
 | Real          |           0.4771 |           -0.1144 |         -0.0349 | 0.1264 |
@@ -292,7 +267,7 @@ data.frame(
 From this table:
 
 - As expected, the “Real” model is the best performing and has the
-  smallest vias of the three models.
+  smallest bias of the three models.
 - The “Wishful” model has a smaller bias in the intercept (because of
   the prior), but has a higher MAE than the two other models.
 - The “Approx” model has a higher bias in the intercept, but it has

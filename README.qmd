@@ -67,7 +67,7 @@ mle <- function(fn, par) {
 
 ## Attempt one: Ideal world (we know all)
 
-In an ideal world we get to know the data-generating process fully. Here, the MLE estimation should be able to recover the parameters of the model **and** the MAE should be the lowest possible.
+In an ideal world we get to know the data-generating process fully. Here, the Maximum Likelihood estimation [MLE] should be able to recover the parameters of the model **and** the Mean Absolute Error [MAE] should be the lowest possible.
 
 ```{r}
 #| label: ideal
@@ -167,6 +167,7 @@ y_pred <- plogis(1 + theta[2] * x_target[,1])
 
 ```{r}
 #| label: print-all
+#| echo: false
 data.frame(
   Model = c("Real", "Approx", "Wishful", "Fully Wishful"),
   'Intercept (bias)' = c(
@@ -194,7 +195,7 @@ data.frame(
 
 From this table:
 
-- As expected, the "Real" model is the best performing and has the smallest vias of the three models.
+- As expected, the "Real" model is the best performing and has the smallest bias of the three models.
 - The "Wishful" model has a smaller bias in the intercept (because of the prior), but has a higher MAE than the two other models.
 - The "Approx" model has a higher bias in the intercept, but it has better performance in prediction compared to the "Wishful" model.
 - The "Fully Wishful" model is the model with 0 bias in intercept and `x_observed`, but it has the highest MAE.
